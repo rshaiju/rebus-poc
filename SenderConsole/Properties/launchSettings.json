@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "SenderConsole": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "queueName": "queue-101",
+        "sb-connectionstring": "Endpoint=sb://shaijus-poc-bus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=bbzTKxroDx5Io0vHM+SLzGgCuwKxyL4YC1p8A6c4qdE="
+      }
+    }
+  }
+}
