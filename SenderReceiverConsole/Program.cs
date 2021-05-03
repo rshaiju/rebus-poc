@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Rebus.Bus;
 using Rebus.Config;
+using Rebus.Retry.Simple;
 using Rebus.Routing.TypeBased;
 using Rebus.ServiceProvider;
 using System;
@@ -40,6 +41,7 @@ namespace SenderReceiverConsole
                 .AddRebus((configure, provider) =>
                             configure.Transport(t => t.UseAzureServiceBus(serviceBusConnectionString, queueName))
                             .Routing(r => r.TypeBased().Map<string>(queueName))
+                            .Options(b => b.SimpleRetryStrategy(secondLevelRetriesEnabled: true, maxDeliveryAttempts:1))
                           ).AutoRegisterHandlersFromAssembly(Assembly.GetExecutingAssembly())
                 .BuildServiceProvider();
 
